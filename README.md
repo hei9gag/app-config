@@ -16,12 +16,10 @@ https://argo-cd.readthedocs.io/en/stable/getting_started/
 2. argocd login <ARGOCD_SERVER> (e.g. ARGOCD_SERVER = localhost:8080 [If you host locally])
 3. argocd account update-password
 
-# Declarative Setup for Applications
+## Setup applications
 https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/
 1. Run command `kubectl apply -f ./applications` to setup application in Argo CD
 
-# How to access ArgoCD UI locally
-Run `kubectl port-forward svc/argocd-server -n {namespace} 8080:443`
-
-# How to login ArgoCD via Commandline
-
+## Access ArgoCD UI locally
+1. Run `kubectl port-forward svc/argocd-server -n {namespace} 8080:443`
+2. Open browser and input `http://localhost:8080
