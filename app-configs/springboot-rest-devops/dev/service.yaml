@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     app: springboot-rest-devops
-  type: NodePort # Use ClusterIP if you are not testing locally
+  type: ClusterIP # Use ClusterIP if you are not testing locally
   sessionAffinity: None
   sessionAffinityConfig:
     clientIP:
@@ -17,4 +17,4 @@ spec:
     # targetPort: 8080 # Uncomment this the type is ClusterIP
     # If you set the `spec.type` field to `NodePort` and you want a specific port number,
     # you can specify a value in the `spec.ports[*].nodePort` field.
-    nodePort: 30080 # Uncomment this if the type is NodePort
+    # nodePort: 30080 # Uncomment this if the type is NodePort
