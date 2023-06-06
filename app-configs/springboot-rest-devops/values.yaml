@@ -1,21 +1,29 @@
 # Default values for springboot-rest.
-replicaCount: 1
-port: 8080
 
-image:
-  repository: brianhei/spring-application
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.0.1"
+deployment:
+  replicaCount: 2
+  port: 8080
+  resources:
+    request:
+      cpu: 200m
+      memory: 1000Mi
+    limit:
+      cpu: 400m
+      memory: 2000Mi
+  image:
+    repository: brianhei/spring-application
+    pullPolicy: IfNotPresent
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: "0.0.1"
 
-resources:
-  request:
-    cpu: 200m
-    memory: 1000Mi
-  limit:
-    cpu: 400m
-    memory: 2000Mi
+service:
+  type: NodePort
+  port: 8080
+  targetPort: 8080
+  nodePort: 30080
 
 ingress:
+  enabled: false
   host: bc.demo.com
   path: /
+  port: 8080

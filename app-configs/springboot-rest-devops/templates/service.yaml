@@ -3,9 +3,9 @@ kind: Service
 metadata:
   name: {{ include "springboot-rest-devops.fullname" . }}-svc
 spec:
+  type: {{ .Values.service.type }}
   selector:
-    app: {{ include "springboot-rest-devops.fullname" . }}
-  type: ClusterIP # Use ClusterIP if you are not testing locally
+    app: {{ include "springboot-rest-devops.fullname" . }}    
   sessionAffinity: None
   sessionAffinityConfig:
     clientIP:
@@ -13,8 +13,6 @@ spec:
   ports:
   - name: {{ include "springboot-rest-devops.fullname" . }}
     protocol: TCP
-    port: {{ .Values.port }}
-    targetPort: {{ .Values.port }} # Uncomment this the type is ClusterIP
-    # If you set the `spec.type` field to `NodePort` and you want a specific port number,
-    # you can specify a value in the `spec.ports[*].nodePort` field.
-    #nodePort: 30080 # Uncomment this if the type is NodePort
+    port: {{ .Values.service.port }}
+    targetPort: {{ .Values.service.targetPort }}
+    nodePort: {{ .Values.service.nodePort }}

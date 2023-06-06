@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: {{ include "springboot-rest-devops.fullname" . }}
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.deployment.replicaCount }}
   strategy:
     rollingUpdate:
       maxSurge: 30%
@@ -21,14 +21,14 @@ spec:
     spec:      
       containers:
       - name:  {{ include "springboot-rest-devops.fullname" . }}
-        image:  '{{ .Values.image.repository }}:{{ .Values.image.tag }}'
+        image:  '{{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}'
         resources:
           requests:
-            cpu: {{ .Values.resources.request.cpu }}
-            memory: {{ .Values.resources.request.memory }}
+            cpu: {{ .Values.deployment.resources.request.cpu }}
+            memory: {{ .Values.deployment.resources.request.memory }}
           limits:
-            cpu: {{ .Values.resources.limit.cpu }}
-            memory: {{ .Values.resources.limit.memory }}
+            cpu: {{ .Values.deployment.resources.limit.cpu }}
+            memory: {{ .Values.deployment.resources.limit.memory }}
         ports:
-        - containerPort: {{ .Values.port }}
+        - containerPort: {{ .Values.deployment.port }}
       restartPolicy: Always
