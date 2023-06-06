@@ -1,3 +1,9 @@
+# What is Helm
+Helm helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application.
+
+# How to install Helm
+Run `brew install helm`
+
 # What is ArgpCD
 Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes.
 
@@ -23,3 +29,4 @@ https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/
 ## Access ArgoCD UI locally
 1. Run `kubectl port-forward svc/argocd-server -n {namespace} 8080:443`
 2. Open browser and input `http://localhost:8080
+

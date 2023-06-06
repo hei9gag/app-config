@@ -1,0 +1,19 @@
+# https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "springboot-rest-devops.fullname" . }}-ingress
+spec:
+  ingressClassName: nginx
+  rules:   
+    - host: {{ .Values.ingress.host }}
+      http:   
+        paths:   
+          - path: {{ .Values.ingress.path }}
+            pathType: Prefix   
+            backend:   
+              service:   
+                name: {{ include "springboot-rest-devops.fullname" . }}-svc
+                port:   
+                  number: {{ .Values.port }}

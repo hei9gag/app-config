@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  {{ include "springboot-rest-devops.fullname" . }}
+  labels:
+    app:  {{ include "springboot-rest-devops.fullname" . }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ include "springboot-rest-devops.fullname" . }}
+  replicas: {{ .Values.replicaCount }}
+  strategy:
+    rollingUpdate:
+      maxSurge: 30%
+      maxUnavailable: 30%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app:  {{ include "springboot-rest-devops.fullname" . }}
+    spec:      
+      containers:
+      - name:  {{ include "springboot-rest-devops.fullname" . }}
+        image:  '{{ .Values.image.repository }}:{{ .Values.image.tag }}'
+        resources:
+          requests:
+            cpu: {{ .Values.resources.request.cpu }}
+            memory: {{ .Values.resources.request.memory }}
+          limits:
+            cpu: {{ .Values.resources.limit.cpu }}
+            memory: {{ .Values.resources.limit.memory }}
+        ports:
+        - containerPort: {{ .Values.port }}
+      restartPolicy: Always
