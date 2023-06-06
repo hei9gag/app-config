@@ -4,6 +4,23 @@ Helm helps you manage Kubernetes applications — Helm Charts help you define, i
 # How to install Helm
 Run `brew install helm`
 
+# How to use helm chart locally
+## Deploy app
+1. Open terminal and navigate to the chart folder
+2. Run `helm install {any name} -f {values file name} ./`
+
+## Update app values
+Run `helm upgrade {release name} -f {values file name} ./`
+
+## Delete release
+Run `helm uninstall {release name}`
+
+## Lists all of the release for a specified namespace
+Run `helm list`
+
+## Lint
+Run `helm lint`
+
 # What is ArgpCD
 Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes.
 
