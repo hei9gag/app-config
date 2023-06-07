@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: springboot-rest-devops
+  name: springboot-rest-devops-dev
   namespace: argocd
   labels:
-    name: springboot-rest-devops
+    name: springboot-rest-devops-dev
 spec:
   project: default
   source:
     repoURL: https://github.com/hei9gag/app-config.git
     targetRevision: HEAD
-    path: app-configs/springboot-rest-devops
+    path: app-configs/springboot-rest-devops/dev
     helm:    
       # Helm values files for overriding values in the helm chart
       # The path is relative to the spec.source.path directory defined above

@@ -1,7 +1,9 @@
 # Default values for springboot-rest.
 
+env: dev
+
 deployment:
-  replicaCount: 2
+  replicaCount: 1
   port: 8080
   resources:
     request:
