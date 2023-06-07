@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/hei9gag/app-config.git
     targetRevision: HEAD
-    path: app-configs/springboot-rest-devops/dev
+    path: app-configs/springboot-rest-devops
     helm:    
       # Helm values files for overriding values in the helm chart
       # The path is relative to the spec.source.path directory defined above
